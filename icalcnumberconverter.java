@@ -266,6 +266,115 @@ class icalcnumberconverter {
 
 					}
 					break;
+				case 3:
+					char octalconverter = 'Y';
+					while (octalconverter == 'Y') {
+						// System.out.print("\033[H\033[2J");
+						// System.out.flush();
+
+						System.out.println("\t\t\t\t\t\t\t+-----------------------------------------------+");
+						System.out.println("\t\t\t\t\t\t\t|\t\t Octal Converter \t\t|");
+						System.out.println("\t\t\t\t\t\t\t+-----------------------------------------------+");
+
+						System.out.println();
+						System.out.println();
+
+						// Octal CONVERTION
+
+						System.out.print("\t\t\t\t\t\t\tEnter An Octal Number: ");
+						int dc = input.nextInt();
+
+						System.out.println();
+
+						boolean validity = true;
+
+						// number checking...
+						int temp = dc;
+						while (temp != 0) {
+
+							int remainder = temp % 10;
+							temp /= 10;
+							if (!(remainder >= 0 && remainder <= 7)) {
+								validity = false;
+
+							}
+
+						}
+
+						if (validity == true) {
+
+							int octaldecimal = dc;
+							int decimal = 0;
+							int power = 1;
+
+							while (octaldecimal != 0) {
+								int remainder = octaldecimal % 10;
+
+								decimal = decimal + remainder * power;
+								power *= 8;
+
+								octaldecimal /= 10;
+
+							}
+							System.out.println("\t\t\t\t\t\t\tDecimal Number: " + decimal);
+
+							int decimalby = decimal;
+							String binary = "";
+
+							while (decimalby != 0) {
+								int remainder = decimalby % 2;
+								binary = remainder + binary;
+
+								decimalby /= 2;
+
+							}
+							System.out.println("\t\t\t\t\t\t\tBinary Number: " + binary);
+
+							int decimalhex = decimal;
+							String hexa = "";
+							while (decimalhex != 0) {
+								int remainder = decimalhex % 16;
+								if (remainder < 10) {
+									hexa = remainder + hexa;
+								} else {
+									char ch = (char) ('A' + (remainder - 10));
+									hexa = ch + hexa;
+
+								}
+
+								decimalhex /= 16;
+
+							}
+							System.out.println("\t\t\t\t\t\t\tHexa Number: " + hexa);
+
+							System.out.println();
+
+							System.out.print("\t\t\t\t\t\t\t\tDo you want to go to home page (Y/N) -> ");
+							homepage = input.next().charAt(0);
+
+							if (homepage == 'Y' || homepage == 'y') {
+								octalconverter = 'N';
+
+							} else {
+								return;
+							}
+
+						} else {
+							System.out.println("\t\t\t\t\t\t\t\tInvalid Input...");
+							System.out.println();
+
+							System.out.print("\t\t\t\t\t\t\t\tDo you want to input number again (Y/N) -> ");
+							octalconverter = input.next().charAt(0);
+
+							if (octalconverter == 'Y' || octalconverter == 'y') {
+
+							} else {
+								return;
+							}
+						}
+
+					}
+					break;
 
 			}
 		}
